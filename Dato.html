@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Dato</title>
+  </head>
+  <body>
+
+    Pris: 2000kr/døgn <br>
+    Fra dato: <input type="date" id="fradato" onchange="sjekkdato"><br>
+    Til dato: <input type="date" id="tildato" onchange="sjekkdato"><br><br>
+
+    <div id="utdata"></div>
+
+    <script>
+        function sjekkdato() {
+
+            let dag = ["søndag","mandag", "tirsdag", "onsdag", "torsdag", "fredag", "lørdag"]
+            let md = ["januar", "februar", "mars", "april", "mai", "juni", "juli",
+                    "august", "september", "oktober", "novemger", "desember"];
+
+            let ankomstdato = new date(document.getElementById("fradato").value);
+            let avreisedato = new date(document.getElementById("tildato").value);
+
+            let svar = "";
+
+            if (avreisedato > ankomstdato) {
+                //torsdag, 24.september
+            svar += "Ankomst: " + dag[ankomstdato.getDay()] + " " + ankomstdto.getDate() + 
+                ". " + md [ankomstdato.getMonth()] + <br>;
+            svar += "Avreise: " + dag[avreisedato.getDay()] + " " + avreisedato.getDate() + 
+                ". " + md [avreisedato.getMonth()] + <br>;
+
+            let timeDiff = Math.abs(avreisedato.getTime() - ankomstdato.getTime());
+            let DiffDays = Math.ceil(timeDiff / (1000*3600*24));
+            pris = DiffDays * 2000;
+
+            svar += "Pris for overntatting blir: " + pris + "<br>";
+
+            } else {
+                svar= "Ankomstdag er før avreisedag";
+            }
+                document.getElementById("utdata").innerHTML = svar;
+
+        }
+
+
+    </script>
+
+
+  </body>
+</html>
