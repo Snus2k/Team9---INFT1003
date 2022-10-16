@@ -1,0 +1,18 @@
+.grid {
+  width: 510px;
+  height: 510px;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.square {
+  height: 100px;
+  width: 100px;
+  border: solid black 1px;
+}
+
+.mole {
+  background-image: url("Grafikk/alienGreen.png");
+  /* cover: cover entire container*/
+  background-size: cover;
+}
