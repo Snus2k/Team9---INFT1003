@@ -1,14 +1,19 @@
 .grid {
-  width: 510px;
-  height: 510px;
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
+  column-gap: 0.5vw;
+  row-gap: 0.5vw;
+  grid-template-columns: 50px 50px 50px 50px 50px 50px 50px 50px 50px 50px 50px;
+  grid-template-rows: 50px;
+  justify-content: center;
+  padding: 50px;
+  background-color: rgba(18, 49, 49, 0.94);
 }
 
-.square {
-  height: 100px;
-  width: 100px;
+.grid > div {
   border: solid black 1px;
+  background-color: darkcyan;
+  text-align: center;
+  padding: 15px 15px;
 }
 
 .mole {

@@ -17,18 +17,18 @@ function randomSquare() {
     square.classList.remove("mole");
   });
 
-  //leg randomSquare
-  let randomSquare = squares[Math.floor(Math.random() * 25)];
+  //lag randomSquare
+  let randomSquare = squares[Math.floor(Math.random() * 29)];
 
-  //legg til mole-class til randomSquare
   randomSquare.classList.add("mole");
 
   //sett hitPosition som randomSquare sin id
   hitPosition = randomSquare.id;
 }
 
-//======================= 2. HIT/MOUSE DOWN FUNCTION ======================
-squares.forEach((square) => {
+//======================= 2. KEYBOARD FUNCTIONS ======================
+
+/*squares.forEach((square) => {
   //for hver square i squares array, legg til event listener/hendelse (mousedown)
   square.addEventListener("mousedown", () => {
     //sjekk om square id som er valgt, har samme id som randomSquare sin id
@@ -41,13 +41,34 @@ squares.forEach((square) => {
       hitPosition = null;
     }
   });
-});
+});*/
+
+window.addEventListener("keydown", onKeyDown, true);
+
+function onKeyDown(event) {
+  //konverter Unicode til bokstaver
+  let letter = String.fromCharCode(event.keyCode);
+  //konverter til uppercase
+  let upperCaseLetter = letter.toUpperCase();
+
+  console.log("KEY PRESSED:" + upperCaseLetter);
+  console.log("hitposition: " + hitPosition);
+
+  if (hitPosition == upperCaseLetter) {
+    result++;
+    //oppdater textContent av score-element
+    score.textContent = result;
+
+    //reset hitPosition
+    hitPosition = null;
+  }
+}
 
 //======================  Timer Functions  ================================================================================
 
 //deklarer moveMole()-funksjon som kjører randomSquare()-funksjon på specifikk tidsinterval (i dette tilfellet hvert 500 ms)
 function moveMole() {
-  timerID = setInterval(randomSquare, 500);
+  timerID = setInterval(randomSquare, 1000);
 }
 
 //kall moveMole()-funksjon
