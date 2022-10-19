@@ -60,7 +60,11 @@ function onKeyDown(event) {
     score.textContent = result;
 
     //reset hitPosition
-    hitPosition = null;
+    hitPosition = null; //gjør denne noe? kommenterte den ut, og det skjedde ikke noe
+  }
+  if (hitPosition != upperCaseLetter) {
+    result--;
+    score.textContent = result;
   }
 }
 
@@ -68,7 +72,7 @@ function onKeyDown(event) {
 
 //deklarer moveMole()-funksjon som kjører randomSquare()-funksjon på specifikk tidsinterval (i dette tilfellet hvert 500 ms)
 function moveMole() {
-  timerID = setInterval(randomSquare, 1000);
+  timerID = setInterval(randomSquare(), 1000);
 }
 
 //kall moveMole()-funksjon
@@ -84,7 +88,10 @@ function countDown() {
     clearInterval(countDownTimerId);
     clearInterval(timerID);
     //Vis sluttbrukers oppnådde skåre
-    alert("GAME OVER! Your final score is " + result);
+
+    if (result >= 1) {
+      alert("Denne skal byttes ut med skjema får highscore");
+    } else alert("Du er så dårlig at du ikke for komme inn på listen");
   }
 }
 
