@@ -1,0 +1,29 @@
+*{
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+body{
+    background: f1fbff;
+}
+.selection-padding{
+    padding: 100px 0;
+}
+
+.navbar.nav a{
+    font-size: 15px;
+    font-variant-caps: titling-caps;
+    font-weight: 500;
+}
+
+.navbar-light .navbar.brand{
+    color:rgb(0, 0, 0);
+    font-size: 15;
+    text-transform: uppercase;
+    font-weight: 700;
+    letter-spacing: 2px;
+}
+
+
+
+
+==== ====

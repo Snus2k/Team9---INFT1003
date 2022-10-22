@@ -1,0 +1,1 @@
+/* Upscope configuration for readandspell.com */ console.error("[Upscope] You have exceeded your Upscope subscription usage limits. We will collect data again once usage falls back within your subscription's limits.");
