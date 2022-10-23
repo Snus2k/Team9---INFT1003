@@ -61,8 +61,7 @@ function onKeyDown(event) {
 
     //reset hitPosition
     hitPosition = null; //gjør denne noe? kommenterte den ut, og det skjedde ikke noe
-  }
-  if (hitPosition != upperCaseLetter) {
+  } else {
     result--;
     score.textContent = result;
   }
