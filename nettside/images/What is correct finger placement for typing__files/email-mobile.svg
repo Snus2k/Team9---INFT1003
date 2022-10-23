@@ -1,9 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="90" height="34" viewBox="0 0 90 34">
-    <g fill="none" fill-rule="evenodd">
-        <path fill="#FB9D00" d="M3 0h84a3 3 0 0 1 3 3v28a3 3 0 0 1-3 3H3a3 3 0 0 1-3-3V3a3 3 0 0 1 3-3z"/>
-        <path fill="#FFF" fill-rule="nonzero" d="M21.478 17.581l5.94 5.092a1.208 1.208 0 0 1-.826.327H12.208c-.321 0-.613-.124-.829-.325l5.943-5.094L19.4 19.4l2.078-1.819zM19.4 18.2l-8.018-6.873c.216-.202.507-.327.826-.327h14.384c.321 0 .613.124.829.325L19.4 18.2zm8.4 3.823L22 17.095l5.8-5.044v9.972zm-16.8 0v-9.97l5.8 5.042-5.8 4.928z"/>
-        <text fill="#FFF" style="font-family: core_sans_a_45_regularregular, sans-serif;" font-size="15" font-weight="500">
-            <tspan x="37" y="22">Email</tspan>
-        </text>
-    </g>
-</svg>
