@@ -64,6 +64,7 @@ function onKeyDown(event) {
   } else {
     result--;
     score.textContent = result;
+    hitPosition = null;
   }
 }
 
@@ -71,7 +72,7 @@ function onKeyDown(event) {
 
 //deklarer moveMole()-funksjon som kjører randomSquare()-funksjon på specifikk tidsinterval (i dette tilfellet hvert 500 ms)
 function moveMole() {
-  timerID = setInterval(randomSquare(), 1000);
+  timerID = setInterval(randomSquare, 1000);
 }
 
 //kall moveMole()-funksjon
@@ -90,7 +91,7 @@ function countDown() {
 
     if (result >= 1) {
       alert("Denne skal byttes ut med skjema for highscore");
-    } else alert("Du er så dårlig at du ikke for komme inn på listen");
+    } else alert("Du er så dårlig at du ikke får komme inn på listen");
   }
 }
 
