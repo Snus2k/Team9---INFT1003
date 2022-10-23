@@ -6,11 +6,13 @@ const score = document.querySelector("#score");
 
 let hitPosition;
 let result = 0;
-let currentTime = 60;
+let currentTime = 10;
 let timerID = null;
 
 //======================= 1. RANDOM SQUARE FUNCTION: fjern alle moles og legg til mole i random square ======================
 function randomSquare() {
+  let moletype = Math.floor(Math.random() * 4 + 1);
+  console.log(moletype);
   //for each square in squares array
   squares.forEach((square) => {
     //fjern mole-class fra alle square-elementer i squares-array
@@ -20,7 +22,16 @@ function randomSquare() {
   //lag randomSquare
   let randomSquare = squares[Math.floor(Math.random() * 29)];
 
-  randomSquare.classList.add("mole");
+  switch (moletype) {
+    case 1:
+      randomSquare.classList.add("mole");
+    case 2:
+      randomSquare.classList.add("mole");
+    case 3:
+      randomSquare.classList.add("mole");
+    case 4:
+      randomSquare.classList.add("mole");
+  }
 
   //sett hitPosition som randomSquare sin id
   hitPosition = randomSquare.id;
