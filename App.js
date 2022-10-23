@@ -89,7 +89,7 @@ function countDown() {
     //Vis sluttbrukers oppnådde skåre
 
     if (result >= 1) {
-      alert("Denne skal byttes ut med skjema får highscore");
+      alert("Denne skal byttes ut med skjema for highscore");
     } else alert("Du er så dårlig at du ikke for komme inn på listen");
   }
 }
