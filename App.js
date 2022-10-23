@@ -64,7 +64,6 @@ function onKeyDown(event) {
   } else {
     result--;
     score.textContent = result;
-    hitPosition = null;
   }
 }
 
@@ -91,7 +90,7 @@ function countDown() {
 
     if (result >= 1) {
       alert("Denne skal byttes ut med skjema for highscore");
-    } else alert("Du er så dårlig at du ikke får komme inn på listen");
+    } else alert("Du er så dårlig at du ikke for komme inn på listen");
   }
 }
 
