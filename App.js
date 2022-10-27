@@ -8,32 +8,42 @@ let hitPosition;
 let result = 0;
 let currentTime = 10;
 let timerID = null;
+let moleType;
 
 //======================= 1. RANDOM SQUARE FUNCTION: fjern alle moles og legg til mole i random square ======================
 function randomSquare() {
-  let moletype = Math.floor(Math.random() * 4 + 1);
-  console.log(moletype);
-  //for each square in squares array
-  squares.forEach((square) => {
-    //fjern mole-class fra alle square-elementer i squares-array
-    square.classList.remove("mole");
-  });
-
+  let moletypeNummer = Math.floor(Math.random() * 4 + 1);
   //lag randomSquare
   let randomSquare = squares[Math.floor(Math.random() * 29)];
 
-  switch (moletype) {
-    case 1:
-      randomSquare.classList.add("mole");
-    case 2:
-      randomSquare.classList.add("mole");
-    case 3:
-      randomSquare.classList.add("mole");
-    case 4:
-      randomSquare.classList.add("mole");
+  function moleAssign(a) {
+    switch (a) {
+      case 1:
+        randomSquare.classList.add("grønnMole");
+        break;
+      case 2:
+        randomSquare.classList.add("gulMole");
+        break;
+      case 3:
+        randomSquare.classList.add("rødMole");
+        break;
+      case 4:
+        randomSquare.classList.add("lillaMole");
+        break;
+    }
   }
 
+  moleAssign(moletypeNummer);
+  console.log(moletypeNummer);
+
+  //for each square in squares array
+  squares.forEach((square) => {
+    //fjern mole-class fra alle square-elementer i squares-array
+    square.classList.remove(moleType);
+  });
+
   //sett hitPosition som randomSquare sin id
+
   hitPosition = randomSquare.id;
 }
 
