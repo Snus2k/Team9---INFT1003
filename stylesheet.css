@@ -16,22 +16,22 @@
   padding: 15px 15px;
 }
 
-.grønnMole {
+.greenMole {
   background-image: url("Grafikk/alienGreen.png");
   /* cover: cover entire container*/
   background-size: cover;
 }
-.gulMole {
+.yellowMole {
   background-image: url("Grafikk/alienYellow.png");
   /* cover: cover entire container*/
   background-size: cover;
 }
-.rødMole {
+.redMole {
   background-image: url("Grafikk/alienRed.png");
   /* cover: cover entire container*/
   background-size: cover;
 }
-.lillaMole {
+.purpleMole {
   background-image: url("Grafikk/alienPurple.png");
   /* cover: cover entire container*/
   background-size: cover;

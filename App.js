@@ -8,33 +8,30 @@ let hitPosition;
 let result = 0;
 let currentTime = 10;
 let timerID = null;
-let moleType;
+
+let moletypeNumber = 0;
 
 //======================= 1. RANDOM SQUARE FUNCTION: fjern alle moles og legg til mole i random square ======================
 function randomSquare() {
-  let moletypeNummer = Math.floor(Math.random() * 4 + 1);
+  moletypeNumber = Math.floor(Math.random() * 4 + 1);
   //lag randomSquare
   let randomSquare = squares[Math.floor(Math.random() * 29)];
 
-  function moleAssign(a) {
-    switch (a) {
-      case 1:
-        randomSquare.classList.add("grønnMole");
-        break;
-      case 2:
-        randomSquare.classList.add("gulMole");
-        break;
-      case 3:
-        randomSquare.classList.add("rødMole");
-        break;
-      case 4:
-        randomSquare.classList.add("lillaMole");
-        break;
-    }
+  switch (moletypeNumber) {
+    case 1:
+      randomSquare.classList.add("greenMole");
+      break;
+    case 2:
+      randomSquare.classList.add("yellowMole");
+      break;
+    case 3:
+      randomSquare.classList.add("redMole");
+      break;
+    case 4:
+      randomSquare.classList.add("purpleMole");
+      break;
   }
-
-  moleAssign(moletypeNummer);
-  console.log(moletypeNummer);
+  console.log(moletypeNumber);
 
   //for each square in squares array
   squares.forEach((square) => {
@@ -44,7 +41,7 @@ function randomSquare() {
 
   //sett hitPosition som randomSquare sin id
 
-  hitPosition = randomSquare.id;
+  // hitPosition = randomSquare.id;
 }
 
 //======================= 2. KEYBOARD FUNCTIONS ======================
