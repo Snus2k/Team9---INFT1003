@@ -11,6 +11,9 @@ let timerID = null;
 let moleType;
 let upperCaseLetter;
 
+let highscoreArray = [];
+let sortedHighscoreArray;
+
 //======================= 1. RANDOM SQUARE FUNCTION: fjern alle moles og legg til mole i random square ======================
 function randomSquare() {
   console.log(moleType);
@@ -70,7 +73,7 @@ function onKeyDown(event) {
     case "greenMole":
       greenMole();
       break;
-    case "yelloMole":
+    case "yellowMole":
       yellowMole();
       break;
     case "redMole":
@@ -121,13 +124,6 @@ function redMole() {
   console.log("RØD MOLE");
 
   if (hitPosition == upperCaseLetter) {
-    result++;
-    //oppdater textContent av score-element
-    score.textContent = result;
-
-    //reset hitPosition
-    hitPosition = null; //gjør denne noe? kommenterte den ut, og det skjedde ikke noe
-  } else {
     result--;
     //oppdater textContent av score-element
     score.textContent = result;
@@ -139,6 +135,14 @@ function redMole() {
 
 function purpleMole() {
   console.log("LILLA MOLE");
+  if (hitPosition == upperCaseLetter) {
+    result++;
+    //oppdater textContent av score-element
+    score.textContent = result;
+
+    //reset hitPosition
+    hitPosition = null; //gjør denne noe? kommenterte den ut, og det skjedde ikke noe
+  }
 }
 
 //======================  Timer Functions  ================================================================================
@@ -160,13 +164,69 @@ function countDown() {
     //Kanseller alle tidsfunksjonene som kjører på intervaller
     clearInterval(countDownTimerId);
     clearInterval(timerID);
-    //Vis sluttbrukers oppnådde skåre
 
-    if (result >= 1) {
-      alert("Denne skal byttes ut med skjema for highscore");
-    } else alert("Du er så dårlig at du ikke får komme inn på listen");
+    checkHighscore();
   }
 }
-
 //deklarer countDownTimerId, som kjører countDown()-funksjon på spesifikk intervall (i dette tilfellet hvert 1000 ms)
 let countDownTimerId = setInterval(countDown, 1000);
+
+function compareNumbers(a, b) {
+  return a - b;
+}
+
+function checkHighscore() {
+  //======== HVIS SCORE UNDER ELLER LIK 0
+  if (result <= 0) {
+    //Betingelse 2: For lav skåre for å legge i tom array
+    alert("Godt forsøk! Øvelse gjør mester. ");
+  } else {
+    //====== HVIS TOM ARRAY
+    if (highscoreArray.length >= 0) {
+      //Betingelse 1: Legge skåre i tom array
+      if (result > 0) {
+        console.log("Legge skåre i tom array");
+
+        let username = prompt(
+          "Bra jobba! Du har oppnådd en high score som er verdig å legge til i topp ti!",
+          "Skriv inn ditt navn her"
+        );
+
+        highscoreArray.push({ navn: username, highscore: result });
+      }
+    } else {
+      //======= HVIS IKKE TOM ARRAY
+
+      //Betingelse 1: Legge til skåre i array som allerede har 10 elementer
+      if (highscoreArray.length >= 10) {
+        highscoreArray.forEach((highscoreObject) => {
+          if (result > highscoreObject[highscore]) {
+            let username = prompt(
+              "Bra jobba! Du har oppnådd en high score som er verdig å legge til i topp ti!",
+              "Skriv inn ditt navn her"
+            );
+
+            const index = highscoreArray.findIndex((object) => {
+              return object.highscore === highscoreObject[highscore];
+            });
+
+            highscoreArray.splice(index, 1);
+
+            highscoreArray.push({ navn: username, highscore: result });
+          } else {
+            alert("Godt forsøk! Øvelse gjør mester. ");
+          }
+        });
+      } else if (highscoreArray.length < 10) {
+        //Betingelse 2: Legge til skåre i array som ikke har 10 elementer ennå
+        let username = prompt(
+          "Bra jobba! Du har oppnådd en high score som er verdig å legge til i topp ti!",
+          "Skriv inn ditt navn her"
+        );
+
+        highscoreArray.push({ navn: username, highscore: result });
+      }
+    }
+  }
+  console.log(highscoreArray);
+}
