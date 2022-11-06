@@ -11,10 +11,15 @@ let timerID = null;
 let moleType;
 let upperCaseLetter;
 
+let lowOnTime = new Audio("/Lyder/8SekIgjen.mp3");
+let madeTheList = new Audio("/Lyder/KomInnPåLista.mp3");
+let noScore = new Audio("/Lyder/KomIkkeInnPåLista.mp3");
+let losePoint = new Audio("/Lyder/MisterEtPoeng.mp3");
+
 //======================= 1. RANDOM SQUARE FUNCTION: fjern alle moles og legg til mole i random square ======================
 function randomSquare() {
   console.log(moleType);
-
+  if (currentTime === 9) lowOnTime.play();
   //for each square in squares array
   squares.forEach((square) => {
     //fjern moleType-class fra alle square-elementer i squares-array
@@ -128,6 +133,7 @@ function redMole() {
     //reset hitPosition
     hitPosition = null; //gjør denne noe? kommenterte den ut, og det skjedde ikke noe
   } else {
+    losePoint.play();
     result--;
     //oppdater textContent av score-element
     score.textContent = result;
@@ -163,8 +169,12 @@ function countDown() {
     //Vis sluttbrukers oppnådde skåre
 
     if (result >= 1) {
+      madeTheList.play();
       alert("Denne skal byttes ut med skjema for highscore");
-    } else alert("Du er så dårlig at du ikke får komme inn på listen");
+    } else {
+      noScore.play();
+      alert("Du er så dårlig at du ikke får komme inn på listen");
+    }
   }
 }
 
