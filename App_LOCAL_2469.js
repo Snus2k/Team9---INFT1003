@@ -26,6 +26,7 @@ function randomSquare() {
   let randomSquare = squares[Math.floor(Math.random() * 29)];
 
   moleAssign(moletypeNummer, randomSquare);
+  //  console.log(moletypeNummer);
 
   //sett hitPosition som randomSquare sin id
 
@@ -35,20 +36,20 @@ function randomSquare() {
 function moleAssign(moletypeNummer, randomSquare) {
   switch (moletypeNummer) {
     case 1:
-      randomSquare.classList.add("greenMole");
-      moleType = "greenMole";
+      randomSquare.classList.add("grønnMole");
+      moleType = "grønnMole";
       break;
     case 2:
-      randomSquare.classList.add("yellowMole");
-      moleType = "yellowMole";
+      randomSquare.classList.add("gulMole");
+      moleType = "gulMole";
       break;
     case 3:
-      randomSquare.classList.add("redMole");
-      moleType = "redMole";
+      randomSquare.classList.add("rødMole");
+      moleType = "rødMole";
       break;
     case 4:
-      randomSquare.classList.add("purpleMole");
-      moleType = "purpleMole";
+      randomSquare.classList.add("lillaMole");
+      moleType = "lillaMole";
       break;
   }
 }
@@ -67,22 +68,22 @@ function onKeyDown(event) {
   console.log("hitposition: " + hitPosition);
 
   switch (moleType) {
-    case "greenMole":
-      greenMole();
+    case "grønnMole":
+      grønnMole();
       break;
-    case "yelloMole":
-      yellowMole();
+    case "gulMole":
+      gulMole();
       break;
-    case "redMole":
-      redMole();
+    case "rødMole":
+      rødMole();
       break;
-    case "purpleMole":
-      purpleMole();
+    case "lillaMole":
+      lillaMole();
       break;
   }
 }
 
-function greenMole() {
+function grønnMole() {
   console.log("GRØNN MOLE");
 
   if (hitPosition == upperCaseLetter) {
@@ -95,7 +96,7 @@ function greenMole() {
   }
 }
 
-function yellowMole() {
+function gulMole() {
   console.log("GUL MOLE");
 
   if (hitPosition == upperCaseLetter) {
@@ -117,7 +118,7 @@ function yellowMole() {
   }
 }
 
-function redMole() {
+function rødMole() {
   console.log("RØD MOLE");
 
   if (hitPosition == upperCaseLetter) {
@@ -137,7 +138,7 @@ function redMole() {
   }
 }
 
-function purpleMole() {
+function lillaMole() {
   console.log("LILLA MOLE");
 }
 

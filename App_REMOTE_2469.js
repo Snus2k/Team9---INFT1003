@@ -8,52 +8,58 @@ let hitPosition;
 let result = 0;
 let currentTime = 10;
 let timerID = null;
-let moleType;
-let upperCaseLetter;
+
+let moletypeNumber = 0;
 
 //======================= 1. RANDOM SQUARE FUNCTION: fjern alle moles og legg til mole i random square ======================
 function randomSquare() {
-  console.log(moleType);
-
-  //for each square in squares array
-  squares.forEach((square) => {
-    //fjern moleType-class fra alle square-elementer i squares-array
-    square.classList.remove(moleType);
-  });
-
-  let moletypeNummer = Math.floor(Math.random() * 4 + 1);
+  moletypeNumber = Math.floor(Math.random() * 4 + 1);
   //lag randomSquare
   let randomSquare = squares[Math.floor(Math.random() * 29)];
 
-  moleAssign(moletypeNummer, randomSquare);
-
-  //sett hitPosition som randomSquare sin id
-
-  hitPosition = randomSquare.id;
-}
-
-function moleAssign(moletypeNummer, randomSquare) {
-  switch (moletypeNummer) {
+  switch (moletypeNumber) {
     case 1:
       randomSquare.classList.add("greenMole");
-      moleType = "greenMole";
       break;
     case 2:
       randomSquare.classList.add("yellowMole");
-      moleType = "yellowMole";
       break;
     case 3:
       randomSquare.classList.add("redMole");
-      moleType = "redMole";
       break;
     case 4:
       randomSquare.classList.add("purpleMole");
-      moleType = "purpleMole";
       break;
   }
+  console.log(moletypeNumber);
+
+  //for each square in squares array
+  squares.forEach((square) => {
+    //fjern mole-class fra alle square-elementer i squares-array
+    square.classList.remove(moleType);
+  });
+
+  //sett hitPosition som randomSquare sin id
+
+  // hitPosition = randomSquare.id;
 }
 
 //======================= 2. KEYBOARD FUNCTIONS ======================
+
+/*squares.forEach((square) => {
+  //for hver square i squares array, legg til event listener/hendelse (mousedown)
+  square.addEventListener("mousedown", () => {
+    //sjekk om square id som er valgt, har samme id som randomSquare sin id
+    if (square.id == hitPosition) {
+      result++;
+      //oppdater textContent av score-element
+      score.textContent = result;
+
+      //reset hitPosition
+      hitPosition = null;
+    }
+  });
+});*/
 
 window.addEventListener("keydown", onKeyDown, true);
 
@@ -61,64 +67,10 @@ function onKeyDown(event) {
   //konverter Unicode til bokstaver
   let letter = String.fromCharCode(event.keyCode);
   //konverter til uppercase
-  upperCaseLetter = letter.toUpperCase();
+  let upperCaseLetter = letter.toUpperCase();
 
   console.log("KEY PRESSED:" + upperCaseLetter);
   console.log("hitposition: " + hitPosition);
-
-  switch (moleType) {
-    case "greenMole":
-      greenMole();
-      break;
-    case "yelloMole":
-      yellowMole();
-      break;
-    case "redMole":
-      redMole();
-      break;
-    case "purpleMole":
-      purpleMole();
-      break;
-  }
-}
-
-function greenMole() {
-  console.log("GRØNN MOLE");
-
-  if (hitPosition == upperCaseLetter) {
-    result++;
-    //oppdater textContent av score-element
-    score.textContent = result;
-
-    //reset hitPosition
-    hitPosition = null; //gjør denne noe? kommenterte den ut, og det skjedde ikke noe
-  }
-}
-
-function yellowMole() {
-  console.log("GUL MOLE");
-
-  if (hitPosition == upperCaseLetter) {
-    result++;
-    //oppdater textContent av score-element
-    score.textContent = result;
-
-    currentTime += 5;
-    //oppdater textContent av timeLeft-elementet
-    timeLeft.textContent = currentTime;
-
-    //reset hitPosition
-    hitPosition = null; //gjør denne noe? kommenterte den ut, og det skjedde ikke noe
-  } else {
-    currentTime -= 1;
-    //oppdater textContent av timeLeft-elementet
-    timeLeft.textContent = currentTime;
-    hitPosition = null;
-  }
-}
-
-function redMole() {
-  console.log("RØD MOLE");
 
   if (hitPosition == upperCaseLetter) {
     result++;
@@ -129,16 +81,9 @@ function redMole() {
     hitPosition = null; //gjør denne noe? kommenterte den ut, og det skjedde ikke noe
   } else {
     result--;
-    //oppdater textContent av score-element
     score.textContent = result;
-
-    //reset hitPosition
-    hitPosition = null; //gjør denne noe? kommenterte den ut, og det skjedde ikke noe
+    hitPosition = null;
   }
-}
-
-function purpleMole() {
-  console.log("LILLA MOLE");
 }
 
 //======================  Timer Functions  ================================================================================
