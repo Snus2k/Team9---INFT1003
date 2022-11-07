@@ -11,6 +11,8 @@ let timerID = null;
 let moleType;
 let upperCaseLetter;
 
+let highscoreArray = [];
+
 let lowOnTime = new Audio("/Lyder/8SekIgjen.mp3");
 let madeTheList = new Audio("/Lyder/KomInnPåLista.mp3");
 let noScore = new Audio("/Lyder/KomIkkeInnPåLista.mp3");
@@ -170,10 +172,10 @@ function countDown() {
 
     if (result >= 1) {
       madeTheList.play();
-      alert("Denne skal byttes ut med skjema for highscore");
+      // alert("Denne skal byttes ut med skjema for highscore");
     } else {
       noScore.play();
-      alert("Du er så dårlig at du ikke får komme inn på listen");
+      // alert("Du er så dårlig at du ikke får komme inn på listen");
     }
     checkHighscore();
   }
