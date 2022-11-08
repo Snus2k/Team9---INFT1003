@@ -27,6 +27,8 @@ function randomSquare() {
   squares.forEach((square) => {
     //fjern moleType-class fra alle square-elementer i squares-array
     square.classList.remove(moleType);
+    square.style.backgroundColor = "#9b94ba";
+    square.style.border = "solid black 1px";
   });
 
   let moletypeNummer = Math.floor(Math.random() * 4 + 1);
@@ -74,6 +76,10 @@ function onKeyDown(event) {
   console.log("KEY PRESSED:" + upperCaseLetter);
   console.log("hitposition: " + hitPosition);
 
+  const squarePressed = document.getElementById(upperCaseLetter);
+  squarePressed.style.backgroundColor = "#d95959";
+  squarePressed.style.border = "solid white 1px";
+
   if (hitPosition == upperCaseLetter) {
     switch (moleType) {
       case "greenMole":
@@ -101,7 +107,8 @@ function onKeyDown(event) {
     }
   } else {
     result--;
-    losePoint.play();
+    score.textContent = result;
+    // losePoint.play();
     hitPosition = null;
   }
 }
