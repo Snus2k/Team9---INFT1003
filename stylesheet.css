@@ -9,10 +9,6 @@
   background-color: #0f0140;
 }
 
-.pressedKey {
-  background-color: #f213a4;
-}
-
 .grid > div {
   border: solid black 1px;
   background-color: #9b94ba;

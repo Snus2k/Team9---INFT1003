@@ -84,12 +84,14 @@ function onKeyDown(event) {
   if (hitPosition == upperCaseLetter) {
     switch (moleType) {
       case "greenMole":
+        squarePressed.style.backgroundColor = "#43c383";
         hitGreen.play();
         result++;
         score.textContent = result;
         hitPosition = null;
         break;
       case "yellowMole":
+        squarePressed.style.backgroundColor = "#43c383";
         result++;
         score.textContent = result;
         currentTime += 5;
@@ -97,11 +99,13 @@ function onKeyDown(event) {
         hitPosition = null;
         break;
       case "redMole":
+        squarePressed.style.backgroundColor = "#d95959";
         result--;
         score.textContent = result;
         hitPosition = null;
         break;
       case "purpleMole":
+        squarePressed.style.backgroundColor = "#43c383";
         result++;
         score.textContent = result;
         hitPosition = null;
