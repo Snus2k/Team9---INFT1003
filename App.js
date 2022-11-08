@@ -68,7 +68,7 @@ window.addEventListener("keydown", onKeyDown, true);
 function onKeyDown(event) {
   //konverter Unicode til bokstaver
   let letter = String.fromCharCode(event.keyCode);
-  //konverter til uppercase
+
   upperCaseLetter = letter.toUpperCase();
 
   console.log("KEY PRESSED:" + upperCaseLetter);
