@@ -17,6 +17,7 @@ let lowOnTime = new Audio("./Lyder/8SekIgjen.mp3");
 let madeTheList = new Audio("./Lyder/KomInnPåLista.mp3");
 let noScore = new Audio("./Lyder/KomIkkeInnPåLista.mp3");
 let losePoint = new Audio("./Lyder/MisterEtPoeng.mp3");
+let hitGreen = new Audio("./Lyder/TraffGrønn.mp3");
 
 //======================= 1. RANDOM SQUARE FUNCTION: fjern alle moles og legg til mole i random square ======================
 function randomSquare() {
@@ -84,6 +85,7 @@ function onKeyDown(event) {
     switch (moleType) {
       case "greenMole":
         squarePressed.style.backgroundColor = "#43c383";
+        hitGreen.play();
         result++;
         score.textContent = result;
         hitPosition = null;
