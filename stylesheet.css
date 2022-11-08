@@ -6,12 +6,16 @@
   grid-template-rows: 50px;
   justify-content: center;
   padding: 50px;
-  background-color: rgba(18, 49, 49, 0.94);
+  background-color: #0f0140;
+}
+
+.pressedKey {
+  background-color: #f213a4;
 }
 
 .grid > div {
   border: solid black 1px;
-  background-color: darkcyan;
+  background-color: #9b94ba;
   text-align: center;
   padding: 15px 15px;
 }
