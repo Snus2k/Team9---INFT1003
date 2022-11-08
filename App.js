@@ -13,10 +13,10 @@ let upperCaseLetter;
 
 let highscoreArray = [];
 
-let lowOnTime = new Audio("/Lyder/8SekIgjen.mp3");
-let madeTheList = new Audio("/Lyder/KomInnPåLista.mp3");
-let noScore = new Audio("/Lyder/KomIkkeInnPåLista.mp3");
-let losePoint = new Audio("/Lyder/MisterEtPoeng.mp3");
+let lowOnTime = new Audio("./Lyder/8SekIgjen.mp3");
+let madeTheList = new Audio("./Lyder/KomInnPåLista.mp3");
+let noScore = new Audio("./Lyder/KomIkkeInnPåLista.mp3");
+let losePoint = new Audio("./Lyder/MisterEtPoeng.mp3");
 
 //======================= 1. RANDOM SQUARE FUNCTION: fjern alle moles og legg til mole i random square ======================
 function randomSquare() {
