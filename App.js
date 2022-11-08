@@ -74,79 +74,35 @@ function onKeyDown(event) {
   console.log("KEY PRESSED:" + upperCaseLetter);
   console.log("hitposition: " + hitPosition);
 
-  switch (moleType) {
-    case "greenMole":
-      greenMole();
-      break;
-    case "yellowMole":
-      yellowMole();
-      break;
-    case "redMole":
-      redMole();
-      break;
-    case "purpleMole":
-      purpleMole();
-      break;
-  }
-}
-
-function greenMole() {
-  console.log("GRØNN MOLE");
-
   if (hitPosition == upperCaseLetter) {
-    result++;
-    //oppdater textContent av score-element
-    score.textContent = result;
-
-    //reset hitPosition
-    hitPosition = null; //gjør denne noe? kommenterte den ut, og det skjedde ikke noe
-  }
-}
-
-function yellowMole() {
-  console.log("GUL MOLE");
-
-  if (hitPosition == upperCaseLetter) {
-    result++;
-    //oppdater textContent av score-element
-    score.textContent = result;
-
-    currentTime += 5;
-    //oppdater textContent av timeLeft-elementet
-    timeLeft.textContent = currentTime;
-
-    //reset hitPosition
-    hitPosition = null; //gjør denne noe? kommenterte den ut, og det skjedde ikke noe
+    switch (moleType) {
+      case "greenMole":
+        result++;
+        score.textContent = result;
+        hitPosition = null;
+        break;
+      case "yellowMole":
+        result++;
+        score.textContent = result;
+        currentTime += 5;
+        timeLeft.textContent = currentTime;
+        hitPosition = null;
+        break;
+      case "redMole":
+        result--;
+        score.textContent = result;
+        hitPosition = null;
+        break;
+      case "purpleMole":
+        result++;
+        score.textContent = result;
+        hitPosition = null;
+        break;
+    }
   } else {
-    currentTime -= 1;
-    //oppdater textContent av timeLeft-elementet
-    timeLeft.textContent = currentTime;
-    hitPosition = null;
-  }
-}
-
-function redMole() {
-  console.log("RØD MOLE");
-
-  if (hitPosition == upperCaseLetter) {
     result--;
-    //oppdater textContent av score-element
-    score.textContent = result;
-
-    //reset hitPosition
-    hitPosition = null; //gjør denne noe? kommenterte den ut, og det skjedde ikke noe
-  }
-}
-
-function purpleMole() {
-  console.log("LILLA MOLE");
-  if (hitPosition == upperCaseLetter) {
-    result++;
-    //oppdater textContent av score-element
-    score.textContent = result;
-
-    //reset hitPosition
-    hitPosition = null; //gjør denne noe? kommenterte den ut, og det skjedde ikke noe
+    losePoint.play();
+    hitPosition = null;
   }
 }
 
@@ -170,13 +126,6 @@ function countDown() {
     clearInterval(countDownTimerId);
     clearInterval(timerID);
 
-    if (result >= 1) {
-      madeTheList.play();
-      // alert("Denne skal byttes ut med skjema for highscore");
-    } else {
-      noScore.play();
-      // alert("Du er så dårlig at du ikke får komme inn på listen");
-    }
     checkHighscore();
   }
 }
@@ -191,12 +140,14 @@ function checkHighscore() {
   //======== HVIS SCORE UNDER ELLER LIK 0
   if (result <= 0) {
     //Betingelse 2: For lav skåre for å legge i tom array
+    noScore.play();
     alert("Godt forsøk! Øvelse gjør mester. ");
   } else {
     //====== HVIS TOM ARRAY
     if (highscoreArray.length >= 0) {
       //Betingelse 1: Legge skåre i tom array
       if (result > 0) {
+        madeTheList.play();
         console.log("Legge skåre i tom array");
 
         let username = prompt(
