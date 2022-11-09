@@ -3,13 +3,16 @@ const squares = document.querySelectorAll(".square");
 const mole = document.querySelector(".mole");
 const timeLeft = document.querySelector("#time-left");
 const score = document.querySelector("#score");
+const newGameButton = document.getElementById("newGameButton");
 
 let hitPosition;
 let result = 0;
 let currentTime = 10;
 let timerID = null;
+let countDownTimerId = null;
 let moleType;
 let upperCaseLetter;
+let intervalRunning = false;
 
 let highscoreArray = [];
 
@@ -69,65 +72,59 @@ function moleAssign(moletypeNummer, randomSquare) {
 window.addEventListener("keydown", onKeyDown, true);
 
 function onKeyDown(event) {
-  //konverter Unicode til bokstaver
-  let letter = String.fromCharCode(event.keyCode);
+  if (intervalRunning) {
+    //konverter Unicode til bokstaver
+    let letter = String.fromCharCode(event.keyCode);
 
-  upperCaseLetter = letter.toUpperCase();
+    upperCaseLetter = letter.toUpperCase();
 
-  console.log("KEY PRESSED:" + upperCaseLetter);
-  console.log("hitposition: " + hitPosition);
+    console.log("KEY PRESSED:" + upperCaseLetter);
+    console.log("hitposition: " + hitPosition);
 
-  const squarePressed = document.getElementById(upperCaseLetter);
-  squarePressed.style.backgroundColor = "#d95959";
-  squarePressed.style.border = "solid white 1px";
+    const squarePressed = document.getElementById(upperCaseLetter);
+    squarePressed.style.backgroundColor = "#d95959";
+    squarePressed.style.border = "solid white 1px";
 
-  if (hitPosition == upperCaseLetter) {
-    switch (moleType) {
-      case "greenMole":
-        squarePressed.style.backgroundColor = "#43c383";
-        hitGreen.play();
-        result++;
-        score.textContent = result;
-        hitPosition = null;
-        break;
-      case "yellowMole":
-        squarePressed.style.backgroundColor = "#43c383";
-        result++;
-        score.textContent = result;
-        currentTime += 5;
-        timeLeft.textContent = currentTime;
-        hitPosition = null;
-        break;
-      case "redMole":
-        squarePressed.style.backgroundColor = "#d95959";
-        result--;
-        score.textContent = result;
-        hitPosition = null;
-        break;
-      case "purpleMole":
-        squarePressed.style.backgroundColor = "#43c383";
-        result++;
-        score.textContent = result;
-        hitPosition = null;
-        break;
+    if (hitPosition == upperCaseLetter) {
+      switch (moleType) {
+        case "greenMole":
+          squarePressed.style.backgroundColor = "#43c383";
+          hitGreen.play();
+          result++;
+          score.textContent = result;
+          hitPosition = null;
+          break;
+        case "yellowMole":
+          squarePressed.style.backgroundColor = "#43c383";
+          result++;
+          score.textContent = result;
+          currentTime += 5;
+          timeLeft.textContent = currentTime;
+          hitPosition = null;
+          break;
+        case "redMole":
+          squarePressed.style.backgroundColor = "#d95959";
+          result--;
+          score.textContent = result;
+          hitPosition = null;
+          break;
+        case "purpleMole":
+          squarePressed.style.backgroundColor = "#43c383";
+          result++;
+          score.textContent = result;
+          hitPosition = null;
+          break;
+      }
+    } else {
+      result--;
+      score.textContent = result;
+      // losePoint.play();
+      hitPosition = null;
     }
-  } else {
-    result--;
-    score.textContent = result;
-    // losePoint.play();
-    hitPosition = null;
   }
 }
 
 //======================  Timer Functions  ================================================================================
-
-//deklarer moveMole()-funksjon som kjører randomSquare()-funksjon på specifikk tidsinterval (i dette tilfellet hvert 500 ms)
-function moveMole() {
-  timerID = setInterval(randomSquare, 1000);
-}
-
-//kall moveMole()-funksjon
-moveMole();
 
 //deklarer countDown-funksjon
 function countDown() {
@@ -135,16 +132,15 @@ function countDown() {
   timeLeft.textContent = currentTime;
 
   if (currentTime == 0) {
-    //Kanseller alle tidsfunksjonene som kjører på intervaller
-    clearInterval(countDownTimerId);
-    clearInterval(timerID);
-
+    intervalRunning = false;
+    intervalManager();
     checkHighscore();
   }
 }
 //deklarer countDownTimerId, som kjører countDown()-funksjon på spesifikk intervall (i dette tilfellet hvert 1000 ms)
-let countDownTimerId = setInterval(countDown, 1000);
+//let countDownTimerId = setInterval(countDown, 1000);
 
+//======================== HIGH SCORE FUNCTIONS
 function compareNumbers(a, b) {
   return a - b;
 }
@@ -205,4 +201,31 @@ function checkHighscore() {
     }
   }
   console.log(highscoreArray);
+}
+
+//======================== ANDRE FUNKSJONER
+
+newGameButton.addEventListener("click", newGame);
+
+function newGame() {
+  result = 0;
+  score.textContent = result;
+  currentTime = 10;
+  timeLeft.textContent = currentTime;
+  intervalRunning = true;
+  intervalManager();
+}
+
+function intervalManager(interval, time) {
+  //Kansellerer alle tidsfunksjonene som kjører på intervaller
+  clearInterval(countDownTimerId);
+  clearInterval(timerID);
+
+  //Hvis intervalRunning = true (når spiller trykker på newGameButton), vil intervallene kjøres
+  if (intervalRunning) {
+    //kjører randomSquare()-funksjon på specifikk tidsintervall
+    timerID = setInterval(randomSquare, 1000);
+    //kjører countDown()-funksjon på spesifikk tidsintervall
+    countDownTimerId = setInterval(countDown, 1000);
+  }
 }
