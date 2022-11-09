@@ -14,6 +14,7 @@
   background-color: #9b94ba;
   text-align: center;
   padding: 15px 15px;
+  font-family: "Tahoma", Geneva, Verdana, sans-serif;
 }
 
 .greenMole {
@@ -48,4 +49,16 @@
   position: absolute;
   top: 0.5vw;
   right: 0.1vw;
+}
+
+#multiplier {
+  visibility: hidden;
+  font-family: "Tahoma", Geneva, Verdana, sans-serif;
+  font-size: 3vw;
+  font-weight: bold;
+  font-style: oblique;
+  color: #ca446c;
+  position: absolute;
+  top: 5vw;
+  right: 50%;
 }
