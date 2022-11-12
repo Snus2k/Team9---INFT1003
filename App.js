@@ -5,6 +5,7 @@ const timeLeft = document.querySelector("#time-left");
 const score = document.querySelector("#score");
 const newGameButton = document.getElementById("newGameButton");
 const toggleSoundButton = document.getElementById("toggleSoundButton");
+const infoLabel = document.getElementById("infoLabel");
 const multiplierLabel = document.getElementById("multiplier");
 
 let hitPosition;
@@ -16,6 +17,8 @@ let moleType;
 let upperCaseLetter;
 let intervalRunning = false;
 let multiplier = false;
+let countdownNumber = 3;
+let speedNumber = 1000;
 
 let correctHits = 0;
 let wrongHits = 0;
@@ -23,10 +26,11 @@ let wrongHits = 0;
 let highscoreArray = [];
 
 let lowOnTime = new Audio("./Lyder/8SekIgjen.mp3");
-let madeTheList = new Audio("./Lyder/KomInnPåLista.mp3");
-let noScore = new Audio("./Lyder/KomIkkeInnPåLista.mp3");
-let losePoint = new Audio("./Lyder/MisterEtPoeng.mp3");
-let hitGreen = new Audio("./Lyder/TraffGrønn.mp3");
+let victory = new Audio("./Lyder/victory.mp3");
+let niceTry = new Audio("./Lyder/niceTry.mp3");
+let wrongHit = new Audio("./Lyder/wrongHit.mp3");
+let hitCorrect = new Audio("./Lyder/hitGreen2.mp3");
+let changeMultipliermode = new Audio("./Lyder/changeMultiplierMode.mp3");
 
 const backgroundMusic = document.createElement("audio");
 backgroundMusic.setAttribute("src", "./Lyder/BackgroundSong.mp3");
@@ -111,7 +115,7 @@ function onKeyDown(event) {
       switch (moleType) {
         case "greenMole":
           squarePressed.style.backgroundColor = "#43c383";
-          hitGreen.play();
+          hitCorrect.play();
           resultChanger("greenMole");
           score.textContent = result;
           correctHits++;
@@ -119,6 +123,7 @@ function onKeyDown(event) {
           break;
         case "yellowMole":
           squarePressed.style.backgroundColor = "#43c383";
+          hitCorrect.play();
           resultChanger("yellowMole");
           score.textContent = result;
           currentTime += 5;
@@ -145,10 +150,10 @@ function onKeyDown(event) {
     } else {
       if (result > 0) {
         result--;
+        wrongHit.play();
       }
       wrongHits++;
       score.textContent = result;
-      // losePoint.play();
       hitPosition = null;
     }
   }
@@ -163,13 +168,13 @@ function countDown() {
 
   //Hvis tid er over
   if (currentTime == 0) {
+    clearInterval(countDownTimerId);
     intervalRunning = false;
-    multiplierLabel.style.visibility = "hidden";
     squares.forEach((square) => {
       //fjern moleType-class fra alle square-elementer i squares-array
       square.classList.remove(moleType);
     });
-
+    multiplierLabel.style.visibility = "hidden";
     intervalManager();
     checkHighscore();
     backgroundMusic.currentTime = 0;
@@ -178,16 +183,12 @@ function countDown() {
 }
 
 function intervalManager() {
-  //Kansellerer følgende tidsfunksjoner som kjører på intervaller
-  clearInterval(countDownTimerId);
+  //Kansellerer tidsfunksjon som kjører på intervalle
   clearInterval(timerID);
-
   //Hvis intervalRunning = true (når spiller trykker på newGameButton), vil intervallene kjøres
   if (intervalRunning) {
     //kjører randomSquare()-funksjon på specifikk tidsintervall
-    timerID = setInterval(randomSquare, 1000);
-    //kjører countDown()-funksjon på spesifikk tidsintervall
-    countDownTimerId = setInterval(countDown, 1000);
+    timerID = setInterval(randomSquare, speedNumber);
   }
 }
 
@@ -199,7 +200,7 @@ function compareNumbers(a, b) {
 function checkHighscore() {
   //======== 1.  HVIS SCORE UNDER ELLER LIK 0, gi trøste-beskjed
   if (result <= 0) {
-    noScore.play();
+    niceTry.play();
     console.log("Score <= 0, Gi trøstebeskjed");
     alert(
       "--- RESULTS: Total score = " +
@@ -213,10 +214,11 @@ function checkHighscore() {
     );
   } else {
     //========= 2. HVIS SCORE ER OVER 0:
+    victory.play();
     //2.1 HVIS TOM ARRAY
     if (highscoreArray.length == 0) {
       //Legge skåre i tom array
-      madeTheList.play();
+
       console.log("Legge skåre i tom array");
 
       let username = prompt(
@@ -313,8 +315,8 @@ function checkHighscore() {
 }
 
 //======================== ANDRE FUNKSJONER
+newGameButton.addEventListener("click", newGameCountdown);
 
-newGameButton.addEventListener("click", newGame);
 toggleSoundButton.addEventListener("click", () => {
   if (toggleSound) {
     toggleSoundButton.innerHTML = "Music OFF";
@@ -329,31 +331,56 @@ toggleSoundButton.addEventListener("click", () => {
   }
 });
 
+function newGameCountdown() {
+  console.log("button clicked");
+  intervalRunning = false;
+  clearInterval(countDownTimerId);
+
+  intervalManager();
+  multiplierLabel.style.visibility = "hidden";
+  if (countdownNumber != -1) {
+    setTimeout(() => {
+      infoLabel.textContent = "NEW MISSION STARTING IN ... " + countdownNumber;
+      countdownNumber--;
+      newGameCountdown();
+    }, 1000);
+  } else {
+    infoLabel.textContent = "";
+    newGameStart();
+    //kjører countDown()-funksjon på spesifikk tidsintervall
+    countDownTimerId = setInterval(countDown, 1000);
+    countdownNumber = 3;
+  }
+}
+
 //resette spillet og alle tellervariabler
-function newGame() {
+function newGameStart() {
   result = 0;
   score.textContent = result;
   currentTime = 10;
   timeLeft.textContent = currentTime;
   multiplier = false;
-  multiplierLabel.style.visibility = "hidden";
   correctHits = 0;
   wrongHits = 0;
-  intervalRunning = true;
-  intervalManager();
-
   backgroundMusic.currentTime = 0;
   backgroundMusic.pause();
-
+  multiplierLabel.style.visibility = "visible";
+  multiplierLabel.textContent = "STANDARD MODE";
+  multiplierLabel.classList.remove("riskMode");
+  multiplierLabel.classList.add("standardMode");
   //reset background music
   if (toggleSound) {
     backgroundMusic.play();
   }
+  infoLabel.textContent = "";
+  intervalRunning = true;
+  intervalManager();
 }
 
 //endrer result basert på moletype og multiplier
 function resultChanger(moleType) {
   if (moleType == "redMole") {
+    wrongHit.play();
     //Sikre at skåre aldri går under 0, selv med eller uten multiplier
     if (multiplier && result >= 2) {
       result -= 2;
@@ -374,16 +401,23 @@ function resultChanger(moleType) {
 
 //regulerer multiplier-variabel
 function multiplierFunction() {
-  //activate multiplier
-  multiplier = true;
-  multiplierLabel.style.visibility = "visible";
-  //  multiplierTime = 10;
-  console.log("Multiplier = " + multiplier);
+  changeMultipliermode.play();
 
-  //after 10 seconds, set multiplier to false
-  setTimeout(() => {
+  if (multiplier) {
     multiplier = false;
-    multiplierLabel.style.visibility = "hidden";
+    multiplierLabel.textContent = "STANDARD MODE";
+    multiplierLabel.classList.remove("riskMode");
+    multiplierLabel.classList.add("standardMode");
+    speedNumber = 1000;
+    intervalManager();
     console.log("Multiplier = " + multiplier);
-  }, 10000);
+  } else {
+    multiplier = true;
+    multiplierLabel.textContent = "RISK MODE - x2 points";
+    multiplierLabel.classList.remove("standardMode");
+    multiplierLabel.classList.add("riskMode");
+    speedNumber = 700;
+    intervalManager();
+    console.log("Multiplier = " + multiplier);
+  }
 }
