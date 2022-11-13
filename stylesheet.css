@@ -5,8 +5,8 @@
   grid-template-columns: 50px 50px 50px 50px 50px 50px 50px 50px 50px 50px 50px;
   grid-template-rows: 50px;
   justify-content: center;
-  padding: 50px;
   background-color: #0f0140;
+  padding: 7%;
 }
 
 .grid > div {
@@ -63,38 +63,37 @@
   color: white;
 }
 
+#flexContainer {
+  display: flex;
+  justify-content: center;
+  flex-flow: column;
+  align-items: center;
+  position: absolute;
+  right: 0;
+  left: 0;
+  top: 2vw;
+}
 #multiplier {
   visibility: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  font-family: "Tahoma", Geneva, Verdana, sans-serif;
+  font-size: 3vw;
 }
 
 .riskMode {
-  font-family: "Tahoma", Geneva, Verdana, sans-serif;
-  font-size: 3vw;
   font-weight: bold;
   font-style: oblique;
   color: #ca446c;
-  position: absolute;
-  top: 3vw;
-  display: block;
-  margin: 0 40%;
 }
 
 .standardMode {
-  font-family: "Tahoma", Geneva, Verdana, sans-serif;
-  font-size: 3vw;
-  color: #19101229;
-  position: absolute;
-  top: 3vw;
-  display: block;
-  margin: 0 40%;
+  color: #1910122a;
 }
 
 #infoLabel {
   font-family: "Tahoma", Geneva, Verdana, sans-serif;
   font-size: 2vw;
   color: #10080a;
-  position: absolute;
-  top: 2vw;
-  display: block;
-  margin: 0 33%;
 }

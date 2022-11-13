@@ -10,7 +10,7 @@ const multiplierLabel = document.getElementById("multiplier");
 
 let hitPosition;
 let result = 0;
-let currentTime = 10;
+let currentTime;
 let timerID = null;
 let countDownTimerId = null;
 let moleType;
@@ -51,7 +51,7 @@ backgroundMusic.addEventListener(
 //======================= 1. RANDOM SQUARE FUNCTION: fjern alle moles og legg til mole i random square ======================
 function randomSquare() {
   console.log(moleType);
-  if (currentTime === 9) lowOnTime.play();
+  if (currentTime == 9) lowOnTime.play();
   if (currentTime >= 9) lowOnTime.pause();
   //for each square in squares array
   squares.forEach((square) => {
@@ -165,7 +165,33 @@ function onKeyDown(event) {
 function countDown() {
   currentTime--;
   timeLeft.textContent = currentTime;
-
+  //regulering av game speed basert på spillerens skåre
+  if (result == 50) {
+    speedNumber = 900;
+    intervalManager(speedNumber);
+    console.log("speednumber: " + speedNumber);
+    infoLabel.textContent = "110% Speed";
+  } else if (result == 100) {
+    speedNumber = 800;
+    intervalManager(speedNumber);
+    console.log("speednumber: " + speedNumber);
+    infoLabel.textContent = "120% Speed";
+  } else if (result == 150) {
+    speedNumber = 700;
+    intervalManager(speedNumber);
+    console.log("speednumber: " + speedNumber);
+    infoLabel.textContent = "130% Speed";
+  } else if (result == 200) {
+    speedNumber = 600;
+    intervalManager(speedNumber);
+    console.log("speednumber: " + speedNumber);
+    infoLabel.textContent = "140% Speed";
+  } else if (result == 250) {
+    speedNumber = 500;
+    intervalManager(speedNumber);
+    console.log("speednumber: " + speedNumber);
+    infoLabel.textContent = "150% Speed (BASE MAX)";
+  }
   //Hvis tid er over
   if (currentTime == 0) {
     clearInterval(countDownTimerId);
@@ -175,17 +201,18 @@ function countDown() {
       square.classList.remove(moleType);
     });
     multiplierLabel.style.visibility = "hidden";
-    intervalManager();
+    intervalManager(speedNumber);
+    console.log("speednumber: " + speedNumber);
     checkHighscore();
     backgroundMusic.currentTime = 0;
     backgroundMusic.pause();
   }
 }
 
-function intervalManager() {
-  //Kansellerer tidsfunksjon som kjører på intervalle
+function intervalManager(speedNumber) {
+  //Kansellerer tidsfunksjon som kjører på intervall
   clearInterval(timerID);
-  //Hvis intervalRunning = true (når spiller trykker på newGameButton), vil intervallene kjøres
+  //Aktiverer randomSquare-intervall på nytt
   if (intervalRunning) {
     //kjører randomSquare()-funksjon på specifikk tidsintervall
     timerID = setInterval(randomSquare, speedNumber);
@@ -332,11 +359,11 @@ toggleSoundButton.addEventListener("click", () => {
 });
 
 function newGameCountdown() {
-  console.log("button clicked");
   intervalRunning = false;
   clearInterval(countDownTimerId);
+  speedNumber = 1000;
 
-  intervalManager();
+  intervalManager(speedNumber);
   multiplierLabel.style.visibility = "hidden";
   if (countdownNumber != -1) {
     setTimeout(() => {
@@ -345,7 +372,8 @@ function newGameCountdown() {
       newGameCountdown();
     }, 1000);
   } else {
-    infoLabel.textContent = "";
+    infoLabel.textContent = "100% Speed";
+    console.log("speednumber: " + speedNumber);
     newGameStart();
     //kjører countDown()-funksjon på spesifikk tidsintervall
     countDownTimerId = setInterval(countDown, 1000);
@@ -357,7 +385,7 @@ function newGameCountdown() {
 function newGameStart() {
   result = 0;
   score.textContent = result;
-  currentTime = 10;
+  currentTime = 20;
   timeLeft.textContent = currentTime;
   multiplier = false;
   correctHits = 0;
@@ -368,13 +396,13 @@ function newGameStart() {
   multiplierLabel.textContent = "STANDARD MODE";
   multiplierLabel.classList.remove("riskMode");
   multiplierLabel.classList.add("standardMode");
+
   //reset background music
   if (toggleSound) {
     backgroundMusic.play();
   }
-  infoLabel.textContent = "";
   intervalRunning = true;
-  intervalManager();
+  intervalManager(speedNumber);
 }
 
 //endrer result basert på moletype og multiplier
@@ -408,16 +436,16 @@ function multiplierFunction() {
     multiplierLabel.textContent = "STANDARD MODE";
     multiplierLabel.classList.remove("riskMode");
     multiplierLabel.classList.add("standardMode");
-    speedNumber = 1000;
-    intervalManager();
+    intervalManager(speedNumber);
+    console.log("speednumber: " + speedNumber);
     console.log("Multiplier = " + multiplier);
   } else {
     multiplier = true;
-    multiplierLabel.textContent = "RISK MODE - x2 points";
+    multiplierLabel.textContent = "RISK MODE x2 points";
     multiplierLabel.classList.remove("standardMode");
     multiplierLabel.classList.add("riskMode");
-    speedNumber = 700;
-    intervalManager();
+    intervalManager(speedNumber * 0.8);
+    console.log("speednumber: " + speedNumber + " x 20% risk mode speed");
     console.log("Multiplier = " + multiplier);
   }
 }
