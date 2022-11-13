@@ -31,6 +31,8 @@ let niceTry = new Audio("./Lyder/niceTry.mp3");
 let wrongHit = new Audio("./Lyder/wrongHit.mp3");
 let hitCorrect = new Audio("./Lyder/hitGreen2.mp3");
 let changeMultipliermode = new Audio("./Lyder/changeMultiplierMode.mp3");
+let moveMoleSound = new Audio("./Lyder/MoveMole.wav");
+let redMoleSound = new Audio("./Lyder/Redmole.wav");
 
 const backgroundMusic = document.createElement("audio");
 backgroundMusic.setAttribute("src", "./Lyder/BackgroundSong.mp3");
@@ -75,18 +77,23 @@ function randomSquare() {
 function moleAssign(moletypeNummer, randomSquare) {
   switch (moletypeNummer) {
     case 1:
+      moveMoleSound.play();
       randomSquare.classList.add("greenMole");
       moleType = "greenMole";
       break;
     case 2:
+      moveMoleSound.play();
       randomSquare.classList.add("yellowMole");
       moleType = "yellowMole";
       break;
     case 3:
+      moveMoleSound.play();
+      redMoleSound.play();
       randomSquare.classList.add("redMole");
       moleType = "redMole";
       break;
     case 4:
+      moveMoleSound.play();
       randomSquare.classList.add("purpleMole");
       moleType = "purpleMole";
       break;
@@ -393,7 +400,7 @@ function newGameStart() {
   backgroundMusic.currentTime = 0;
   backgroundMusic.pause();
   multiplierLabel.style.visibility = "visible";
-  multiplierLabel.textContent = "STANDARD MODE";
+  multiplierLabel.textContent = "";
   multiplierLabel.classList.remove("riskMode");
   multiplierLabel.classList.add("standardMode");
 

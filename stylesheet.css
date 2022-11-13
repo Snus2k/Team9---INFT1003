@@ -1,3 +1,7 @@
+body {
+  background-color: #100126;
+}
+
 .grid {
   display: grid;
   column-gap: 0.5vw;
@@ -71,7 +75,7 @@
   position: absolute;
   right: 0;
   left: 0;
-  top: 2vw;
+  top: 0.9vw;
 }
 #multiplier {
   visibility: hidden;
@@ -95,5 +99,36 @@
 #infoLabel {
   font-family: "Tahoma", Geneva, Verdana, sans-serif;
   font-size: 2vw;
-  color: #10080a;
+  color: white
+}
+
+#cssScore {
+  justify-content: center;
+  position: fixed;
+  top: 40vw;
+  left: 10vw;
+  color: #9b94ba;
+  font-size: 2vw;
+  display: flex;
+}
+#score {
+  position: fixed;
+  left: 27vw;
+}
+
+#cssTimeLeft {
+  justify-content: center;
+  position: fixed;
+  top: 40vw;
+  right: 20vw;
+  color: #9b94ba;
+  font-size: 2vw;
+  display: flex;
+}
+
+#cssTimeLeft > div {
+  position: fixed;
+  right: 15vw;
+  top: 42.5vw;
+  font-size: 3vw;
 }
