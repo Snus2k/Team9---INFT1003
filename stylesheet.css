@@ -1,5 +1,5 @@
 body {
-  background-color: #100126;
+  background-color: #ccc0de;
 }
 
 .grid {
@@ -9,7 +9,6 @@ body {
   grid-template-columns: 50px 50px 50px 50px 50px 50px 50px 50px 50px 50px 50px;
   grid-template-rows: 50px;
   justify-content: center;
-  background-color: #0f0140;
   padding: 7%;
 }
 

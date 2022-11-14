@@ -7,6 +7,7 @@ const newGameButton = document.getElementById("newGameButton");
 const toggleSoundButton = document.getElementById("toggleSoundButton");
 const infoLabel = document.getElementById("infoLabel");
 const multiplierLabel = document.getElementById("multiplier");
+const grid = document.querySelector(".grid");
 
 let hitPosition;
 let result = 0;
@@ -173,30 +174,35 @@ function countDown() {
   currentTime--;
   timeLeft.textContent = currentTime;
   //regulering av game speed basert på spillerens skåre
-  if (result == 50) {
+  if (result == 50 || result == 51) {
     speedNumber = 900;
     intervalManager(speedNumber);
     console.log("speednumber: " + speedNumber);
     infoLabel.textContent = "110% Speed";
-  } else if (result == 100) {
+    grid.style.backgroundColor = "#240140";
+  } else if (result == 100 || result == 101) {
     speedNumber = 800;
     intervalManager(speedNumber);
     console.log("speednumber: " + speedNumber);
     infoLabel.textContent = "120% Speed";
-  } else if (result == 150) {
+    grid.style.backgroundColor = "#411445";
+  } else if (result == 150 || result == 151) {
     speedNumber = 700;
     intervalManager(speedNumber);
     console.log("speednumber: " + speedNumber);
     infoLabel.textContent = "130% Speed";
-  } else if (result == 200) {
+    grid.style.backgroundColor = "#6c1853";
+  } else if (result == 200 || result == 201) {
     speedNumber = 600;
     intervalManager(speedNumber);
     console.log("speednumber: " + speedNumber);
     infoLabel.textContent = "140% Speed";
-  } else if (result == 250) {
+    grid.style.backgroundColor = "#780b18";
+  } else if (result == 250 || result == 251) {
     speedNumber = 500;
     intervalManager(speedNumber);
     console.log("speednumber: " + speedNumber);
+    grid.style.backgroundColor = "#7d0a8f";
     infoLabel.textContent = "150% Speed (BASE MAX)";
   }
   //Hvis tid er over
@@ -403,6 +409,7 @@ function newGameStart() {
   multiplierLabel.textContent = "";
   multiplierLabel.classList.remove("riskMode");
   multiplierLabel.classList.add("standardMode");
+  grid.style.backgroundColor = "#0f0432";
 
   //reset background music
   if (toggleSound) {
