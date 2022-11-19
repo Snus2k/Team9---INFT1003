@@ -13,7 +13,7 @@
     />
     <link rel="stylesheet" href="style.css" />
   </head>
-  <body>
+  <body class="gradientBackground">
     <!--Navbar-->
     <link
       rel="stylesheet"
@@ -39,69 +39,48 @@
       </div>
     </div>
 
-    <!-- HTML: Teller-elementer -->
-    <div id="counterVariableContainer">
-      <h2>Your score:</h2>
-      <h2 id="score">0</h2>
-
-      <h2>Time Left:</h2>
-      <div id="time-left">---</div>
+    <!--Overskrift-->
+    <div class="section-header text-center">
+      <h2>CREDIT</h2>
     </div>
 
-    <div id="flexContainer">
-      <h2 id="infoLabel"></h2>
-      <h2 id="multiplier" class="standardMode"></h2>
-    </div>
+    <!--INNHOLD-->
+    <section class="section-padding">
+      <h4>GAME FUNCTIONALITY</h4>
+      <ul class="creditList">
+        <li>
+          Code based on “Learn JavaScript by Building 7 Games <br />- Full
+          Course” by freeCodeCamp.org
+        </li>
+      </ul>
 
-    <div id="buttonContainer">
-      <img
-        id="toggleSoundButton"
-        src="images/soundON.png"
-        alt="Sound icon shows that sound is turned on"
-      />
-      <button id="newGameButton">New Game</button>
-    </div>
+      <h4>DESIGN</h4>
+      <ul class="creditList">
+        <li>Sprites from https://icon-icons.com/</li>
+        <li>Adobe Color Wheel from https://color.adobe.com/</li>
+        <li>Design work with Sketchbook Pro</li>
+      </ul>
 
-    <!-- GRID-element, med flere child-elements -->
-
-    <div class="grid">
-      <div class="square" id="Q">Q</div>
-      <div class="square" id="W">W</div>
-      <div class="square" id="E">E</div>
-      <div class="square" id="R">R</div>
-      <div class="square" id="T">T</div>
-      <div class="square" id="Y">Y</div>
-      <div class="square" id="U">U</div>
-      <div class="square" id="I">I</div>
-      <div class="square" id="O">O</div>
-      <div class="square" id="P">P</div>
-      <div class="square" id="Å">Å</div>
-      <div class="square" id="A">A</div>
-      <div class="square" id="S">S</div>
-      <div class="square" id="D">D</div>
-      <div class="square" id="F">F</div>
-      <div class="square" id="G">G</div>
-      <div class="square" id="H">H</div>
-      <div class="square" id="J">J</div>
-      <div class="square" id="K">K</div>
-      <div class="square" id="L">L</div>
-      <div class="square" id="Ø">Ø</div>
-      <div class="square" id="Æ">Æ</div>
-      <div class="square" id="Z">Z</div>
-      <div class="square" id="X">X</div>
-      <div class="square" id="C">C</div>
-      <div class="square" id="V">V</div>
-      <div class="square" id="B">B</div>
-      <div class="square" id="N">N</div>
-      <div class="square" id="M">M</div>
-    </div>
+      <h4>SOUND</h4>
+      <ul class="creditList">
+        <li>Sound effects from www.zapsplat.com</li>
+        <li>
+          Stargate by HurricaneTurtle https://hurricaneturtles.bandcamp.com
+          <br />
+          Promoted by @RoyaltyFreePlanet - https://royaltyfreeplanet.com
+          <br />
+          Creative Commons Attribution 3.0
+          <br />
+          http://bit.ly/RFP_CClicense
+        </li>
+      </ul>
+    </section>
 
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"
       integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3"
       crossorigin="anonymous"
     ></script>
-    <script src="App.js" type="text/javascript"></script>
     <script>
       /* MEDIA QUERY: Toggle between adding and removing the "responsive" class to topnav when the user clicks on the icon */
       function myFunction() {
