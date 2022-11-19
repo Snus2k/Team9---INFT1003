@@ -9,130 +9,86 @@
     integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
     <link rel="stylesheet" href="style.css">
 </head>
-<body>
+<body class="gradientBackground">
 
-        <!--Navbar-->
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
-            <div class="container-fluid">
-              <a class="navbar-brand" href="#"></a>
-              <button
-                class="navbar-toggler"
-                type="button"
-                data-bs-toggle="collapse"
-                data-bs-target="#navbarSupportedContent"
-                aria-controls="navbarSupportedContent"
-                aria-expanded="false"
-                aria-label="Toggle navigation"
-              >
-                <!-- <span class="navbar-toggler-icon"></span> -->
-              </button>
-              <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-                <div class="navbar-nav">
-                  <div id="logoContainer">
-                    <div id="logoText">TYPE-A-MOLE</div>
-                    <div id="logoSubText">Improving typing skills by playing</div>
-                  </div>
-      
-                  <div id="linkContainer">
-                    <a class="nav-link" href="index.html">Play</a>
-                    <a class="nav-link" href="nettside2.0_Controls1.0.html"
-                      >Controls</a
-                    >
-                    <a class="nav-link" href="nettside2.0_High score1.0.html"
-                      >High score</a
-                    >
-                    <a class="nav-link" href="nettside2.0_The Team1.0.html"
-                      >The Team</a
-                    >
-                    <a class="nav-link" href="nettside2.0_Contact1.0.html">Contact</a>
-                    <a class="nav-link" href="nettside2.0_Credit1.0.html">Credit</a>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </nav>
+          <!--Navbar-->
+    <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+  />
+
+  <div class="topnav" id="myTopnav">
+    <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+      <i class="fa fa-bars"></i>
+    </a>
+    <div id="logoContainer">
+      <div id="logoText">TYPE-A-MOLE</div>
+      <div id="logoSubText">Improving typing skills by playing</div>
+    </div>
+
+    <div id="linkContainer">
+      <a class="nav-link" href="index.html">Play</a>
+      <a class="nav-link" href="nettside2.0_Controls1.0.html">Controls</a>
+      <a class="nav-link" href="nettside2.0_High score1.0.html">High Score</a>
+      <a class="nav-link" href="nettside2.0_The Team1.0.html">The Team</a>
+      <a class="nav-link" href="nettside2.0_Contact1.0.html">Contact</a>
+      <a class="nav-link" href="nettside2.0_Credit1.0.html">Credit</a>
+    </div>
+  </div>
+
     <!--Overskrift-->
-    <section id="title" class="section-padding">
-        <div class="container">
-            </div class="row">
-                <div class="col-md-12">
-                    <div class="section-header text-center pb-5">
-                        <h3 class="fw-bold">CONTACT<text class="h3"></text>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+    <div class="section-header text-center">
+        <h2>CONTACT<h2>
+    </div>
 
-    <!--Tekst-->
-    <section id="Contact underoverskrift" class="Contact section-padding">
+  <!-- INNHOLD -->
+    <section class="section-padding">
         <div class="container text-center">
-
-
             <div class="container text-center">
                 <div class="row align-items-start">
                     <div class="col">
                         <div class="col">
-                            <label for="" class="form-label">ADDRESS</label>
-                            <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
-                            <small id="addressHelpId" class="form-text text-muted">Help text</small>
+                        <h4>NAVN</h4>
+                            <input id="navnInput" type="text" class="insertBox form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" placeholder="Insert your name here">
                         </div>
                     </div>
                     <div class="col">
-                    <label for="" class="form-label">EMAIL</label>
-                    <input type="email" class="form-control" name="" id="" aria-describedby="emailHelpId" placeholder="abc@mail.com">
-                    <small id="emailHelpId" class="form-text text-muted">Help text</small>
+                   <h4>EMAIL</h4>
+                    <input id="emailInput" type="email" class="insertBox form-control" aria-describedby="emailHelpId" placeholder="Insert your email here">
                 </div>
-                  
             </div>
     </section>
 
-    <section id="Contact innput">
-    <div class="container text-center">
-    <div class="input-group">
-        <div class="col-12">
-        <label for="" class="form-label">INSERT NAME</label>
-        <input type="text" aria-label="NAME" class="form-control">
-        </div>
-    </div>
-
-    <div class="input-group">
-        <div class="col-12">
-        <label for="" class="form-label">INSERT EMAIL</label>
-        <input type="text" aria-label="EMAIL" class="form-control">
-        </div>
-    </div>
-    <br><br>
+    <section class="section-padding">
     <div class="input-group">
         <div class="col-12">
             <label for="" class="form-label"></label>
-            <input type="text" aria-label="COMMENTS TEXT" class="form-control">
-                <a href="link" class ="btn btn-warning">SEND</a>
+            <textArea  id="textArea"> Fill in any questions or feedback you might have here</textArea>
+              
+            <button class="btn">SEND</button>
+            <p id="sendErrorText">Please fill all the fields.</p>
         </div>
     </div>
     </section>
+  
 
-         <!--Tekst
-        <section id="High Score text2" class="Controls section-padding">
-            <div class="container">
-                </div class="row"> 
-                    <div class="col-md-4">
-                        <div class="section-header text-center pb-5">
-                            <h4>SCORE</h4>
-                            <p>
-                            
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-    -->
-
+     
+  
     
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" 
     integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
+    <script src="contact.js" type="text/javascript"></script>
+    <script>
+      /* MEDIA QUERY: Toggle between adding and removing the "responsive" class to topnav when the user clicks on the icon */
+      function myFunction() {
+        var x = document.getElementById("myTopnav");
+        if (x.className === "topnav") {
+          x.className += " responsive";
+        } else {
+          x.className = "topnav";
+        }
+      }
+    </script>
 </body>
 </html>

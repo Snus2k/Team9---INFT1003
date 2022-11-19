@@ -359,12 +359,12 @@ newGameButton.addEventListener("click", newGameCountdown);
 
 toggleSoundButton.addEventListener("click", () => {
   if (toggleSound) {
-    toggleSoundButton.innerHTML = "Music OFF";
+    toggleSoundButton.src = "images/soundOFF.png";
     backgroundMusic.pause();
     toggleSound = false;
   } else {
-    toggleSoundButton.innerHTML = "Music ON";
     toggleSound = true;
+    toggleSoundButton.src = "images/soundON.png";
     if (intervalRunning) {
       backgroundMusic.play();
     }

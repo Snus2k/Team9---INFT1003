@@ -9,155 +9,110 @@
     integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
     <link rel="stylesheet" href="style.css">
 </head>
-<body>
+<body class="gradientBackground">
    
-    
-    <!--Navbar-->
+
       <!--Navbar-->
-      <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <div class="container-fluid">
-          <a class="navbar-brand" href="#"></a>
-          <button
-            class="navbar-toggler"
-            type="button"
-            data-bs-toggle="collapse"
-            data-bs-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent"
-            aria-expanded="false"
-            aria-label="Toggle navigation"
-          >
-            <!-- <span class="navbar-toggler-icon"></span> -->
-          </button>
-          <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-            <div class="navbar-nav">
-              <div id="logoContainer">
-                <div id="logoText">TYPE-A-MOLE</div>
-                <div id="logoSubText">Improving typing skills by playing</div>
-              </div>
-  
-              <div id="linkContainer">
-                <a class="nav-link" href="index.html">Play</a>
-                <a class="nav-link" href="nettside2.0_Controls1.0.html"
-                  >Controls</a
-                >
-                <a class="nav-link" href="nettside2.0_High score1.0.html"
-                  >High score</a
-                >
-                <a class="nav-link" href="nettside2.0_The Team1.0.html"
-                  >The Team</a
-                >
-                <a class="nav-link" href="nettside2.0_Contact1.0.html">Contact</a>
-                <a class="nav-link" href="nettside2.0_Credit1.0.html">Credit</a>
-              </div>
-            </div>
-          </div>
-        </div>
-      </nav>
+      <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+
+    <div class="topnav" id="myTopnav">
+      <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+        <i class="fa fa-bars"></i>
+      </a>
+      <div id="logoContainer">
+        <div id="logoText">TYPE-A-MOLE</div>
+        <div id="logoSubText">Improving typing skills by playing</div>
+      </div>
+
+      <div id="linkContainer">
+        <a class="nav-link" href="index.html">Play</a>
+        <a class="nav-link" href="nettside2.0_Controls1.0.html">Controls</a>
+        <a class="nav-link" href="nettside2.0_High score1.0.html">High Score</a>
+        <a class="nav-link" href="nettside2.0_The Team1.0.html">The Team</a>
+        <a class="nav-link" href="nettside2.0_Contact1.0.html">Contact</a>
+        <a class="nav-link" href="nettside2.0_Credit1.0.html">Credit</a>
+      </div>
+    </div>
+
+
     <!--Overskrift-->
-    <section id="title" class="section-padding">
-        <div class="container">
-            </div class="row">
-                <div class="col-md-12">
-                    <div class="section-header text-center pb-5">
-                        <h3 class="fw-bold">Controls<text class="h3"></text>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+     <div class="section-header text-center">
+     <h2>CONTROLS / HOW TO PLAY<h2>
+    </div>
   
-    <!--Tekst-->
-    <section id="Controls text" class="Controls section-padding">
-        <div class="container">
-            </div class="row"> 
-                <div class="col-md-12">
-                    <div class="section-header text-left pb-5">
-                        <br>
-                        <h4>The base position - home row</h4>
-                        <p>
-                        <ul>
-                            <li>The home row is the set of keys that are the base position for fingers. These are the keys located on the middle row of the keyboard.</li>
-                            <li>Always try to return your fingers to the base position when you are not typing.</li>
-                            <li>Keyboards usually have small bumps on the F and J keys. They help the users locate the base position without having to look.</li>
-                            <li>Place the index fingers over the “F” and “J” key.</li>
+
+    <!-- INNHOLD -->
+    <section class="section-padding">
+                  
+                        <ul id="explanationHeaderContainer"> 
+                            <li><b>Keyboard</b> is required</li>
+                            <br>
+                            <li>Acquire as many points as possible within the time limit</li>
+                            <br>
+                            <li>Gain points by hitting the corresponding keys on the <b>keyboard</b> that the <b>virus</b> inhabit</li>
+                            <br>
+                            <li>The mission is over when time runs out</li>
                         </ul>
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </div>
+                        <br>
+                        <br>
+                        <br>
+                        <br>
+                        <p>There are <b>four</b> different types of <b>virus</b> with their own effects on hit:</p>
+             
+                    
+                       <div class="explanationContainer">
+                             <img class="explanationImage" src="spillGrafikk/alienGreen.png" alt="Green virus">
+                             <div class="explanationText"><p>+ EARN EXTRA POINTS</p></div>
+                         </div>  
+                         
+                         <div class="explanationContainer">
+                             <img class="explanationImage" src="spillGrafikk/alienYellow.png" alt="Yellow virus">
+                             <div class="explanationText"><p>+ EARN EXTRA TIME</p></div>
+                            </div>
+                        
+                            
+                            <div class="explanationContainer">
+                                <img class="explanationImage" src="spillGrafikk/alienRed.png" alt="Red virus">
+                                <div class="explanationText"> <p>- LOSE POINTS</p></div>
+                               </div>
+
+                                
+                         <div class="explanationContainer">
+                            <img class="explanationImage" src="spillGrafikk/alienPurple.png" alt="Purple virus">
+                            <div class="explanationText"> <p> Toggle RISK mode ON or OFF: 
+                                <br>
+                                <br>
+                                When ON, virus appear faster and earned/lost points are doubled </p> </div>
+                        </div>
+
+                        <br>
+                        <br>
+                        <br>
+                        <br>
+                        <br>
+                        <div id="specialText">Good luck on your mission.</div>
+
+
+                        
     </section>
 
-    <!--Controls-img-->
-        <section id="Controls-images">
-            <div class="containter">
-                <div class="row"> 
-                    <div class="mx-auto" style="width: 600px;">
-                        <img src="images/Home-Row-keyb.png" alt="" class="img-fluid">
-                </div>
-            </div>
-            
-        </section>
-        <br>
-        <br>
 
-         <!--Tekst2-->
-        <section id="Controls text2" class="Controls section-padding">
-            <div class="container">
-                </div class="row"> 
-                    <div class="col-md-12">
-                        <div class="section-header text-left pb-5">
-                            <h4>Touch Typing Rules - colour-coded chart</h4>
-                            <p>
-                                <ul>
-                                    <li>Always position your fingers properly on the keyboard to press the right keys when typing.</li>
-                                    <li>The colour-coded chart below shows which finger should press each key.</li>
-                                </ul>
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-         <!--Controls2-img-->
-         <section id="Controls2-images">
-            <div class="containter">
-                <div class="row"> 
-                    <div class="mx-auto" style="width: 600px;">
-                        <img src="images/Keyb-lab-2.jpeg" alt="" class="img-fluid">
-                </div>
-            </div>
-        </section>
-        <br>
-
-         <!--Tekst3-->
-        <section id="Controls text3" class="Controls section-padding">
-            <div class="container">
-                </div class="row"> 
-                    <div class="col-md-12">
-                        <div class="section-header text-left pb-5">
-                            <h4>Correct finger placement</h4>
-                            <p>
-                            <ul>
-                                <li>Press all Section A keys with the left little finger.</li>
-                                <li>Press all Section B keys with the left ring finger.</li>
-                                <li>Press all Section C keys with the left middle finger.</li>
-                                <li>Press all Section D keys with the left index finger.</li>
-                                <li>Press all Section E with either thumb.</li>
-                                <li>Press all Section F keys with the right index finger.</li>
-                                <li>Press all Section G keys with the right middle finger.</li>
-                                <li>Press all Section H keys with the right ring finger.</li>
-                                <li>Press all Section I with the right little finger</li>
-                            </ul>
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" 
     integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
+    <script>
+      /* MEDIA QUERY: Toggle between adding and removing the "responsive" class to topnav when the user clicks on the icon */
+      function myFunction() {
+        var x = document.getElementById("myTopnav");
+        if (x.className === "topnav") {
+          x.className += " responsive";
+        } else {
+          x.className = "topnav";
+        }
+      }
+    </script>
 </body>
 </html>
