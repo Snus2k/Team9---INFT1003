@@ -296,7 +296,12 @@ h5 {
 
 .insertBox {
   width: 30vw;
-  margin-left: 7vw;
+}
+
+.inputContainer {
+  display: flex;
+  justify-content: space-evenly;
+  flex-direction: row;
 }
 
 .input-group {
