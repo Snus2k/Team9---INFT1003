@@ -346,6 +346,7 @@ h5 {
   padding: 15px 15px;
   font-family: "Tahoma", Geneva, Verdana, sans-serif;
   border-radius: 15%;
+  font-weight: 1000;
 }
 
 .greenMole {
@@ -447,12 +448,7 @@ h5 {
   position: absolute;
   right: 0;
   left: 0;
-  top: 50vw;
+  top: 40vw;
   color: rgb(242, 19, 116);
   font-size: 2vw;
-}
-#score {
-}
-
-#cssTimeLeft {
 }
