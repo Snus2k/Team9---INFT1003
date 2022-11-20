@@ -22,6 +22,10 @@ ul {
   font-size: 1.5vw;
 }
 
+ul > li {
+  padding-bottom: 1.5vw;
+}
+
 h2 {
   color: rgb(242, 19, 116);
 }
@@ -202,6 +206,10 @@ h5 {
 
   .creditList > li {
     margin-left: 0;
+  }
+
+  body.gradientBackground {
+    background-color: rgb(10, 01, 26);
   }
 }
 
